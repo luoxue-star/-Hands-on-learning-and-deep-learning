@@ -155,7 +155,7 @@ b5 = nn.Sequential(
     nn.AdaptiveAvgPool2d((1, 1)),
     nn.Flatten())
 net = nn.Sequential(b1, b2, b3, b4, b5, nn.Linear(1024, 10))
-lr, epochs, batch_size = 0.1, 15, 128
+lr, epochs, batch_size = 0.2, 13, 128
 train_iter, test_iter = load_data_fashion_minst(batch_size)
 print("train on GoogleNet")
 train_by_gpu(net, train_iter, test_iter, epochs, lr, torch.device("cuda"))
