@@ -1,3 +1,4 @@
+# 数据获取地址：https://www.kaggle.com/c/classify-leaves
 import torch
 import torch.nn as nn
 import pandas as pd
