@@ -127,7 +127,7 @@ def predict_seq2seq(net, src_sentence, src_vocab, tgt_vocab, num_steps, device, 
     dec_state = net.decoder.init_state(enc_outputs, enc_valid_len)  # 得到初始隐藏状态，即就是encoder的输出
     dec_X = torch.unsqueeze(torch.tensor([tgt_vocab["<bos>"]], dtype=torch.long, device=device), dim=0)  # 添加batch维度
     output_seq, attention_weight_seq = [], []
-    for epoch in range(num_epochs):
+    for step in range(num_steps):
         Y, dec_state = net.decoder(dec_X, dec_state)
         dec_X = Y.argmax(dim=2)  # 使用最高可能性的词元作为下一次的输入
         pred = dec_X.squeeze(dim=0).type(torch.int32).item()
